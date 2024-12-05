@@ -1,0 +1,78 @@
+<form method="GET" action="{% url 'dashboard' %}">
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ request.GET.title }}">
+    </div>
+
+    <div>
+        <label for="rent_amount">Rent Amount:</label>
+        <input type="number" id="rent_amount" name="rent_amount" value="{{ request.GET.rent_amount }}">
+    </div>
+
+    <button type="submit">Search</button>
+</form>
+
+<h2>Properties</h2>
+
+<style>
+    .property-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .property-card {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+        width: 300px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .property-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .property-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    .booking-button {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 15px;
+        background-color: #28a745;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .booking-button:hover {
+        background-color: #218838;
+    }
+</style>
+
+<div class="property-grid">
+    {% for property in properties %}
+        <div class="property-card">
+            <strong>{{ property.title }}</strong><br>
+            {% if property.image %}
+                <img src="{{ property.image.url }}" alt="{{ property.title }}" class="property-image"><br>
+            {% endif %}
+            <p>Rent Amount: {{ property.rent_amount }}</p>
+            <p>Available Date: {{ property.available_date }}</p>
+            <p>Owner: {{ property.owner.username }}</p>
+            <a href="{% url 'car_booking' %}" class="booking-button">Book Now</a>
+        </div>
+    {% empty %}
+        <p>No properties found matching your criteria.</p>
+    {% endfor %}
+</div>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Navbar with Login/Register</title>
+    <style>
+        /* General Reset */
+        body, ul, li, a, button {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Unique Navbar Design */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #4a90e2, #00509e);
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links li {
+            display: inline;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #ffc300;
+        }
+
+        .navbar .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .navbar .auth-buttons .btn {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .navbar .auth-buttons .btn-login {
+            background-color: transparent;
+            color: #ffc300;
+            border: 2px solid #ffc300;
+        }
+
+        .navbar .auth-buttons .btn-login:hover {
+            background-color: #ffc300;
+            color: #00509e;
+        }
+
+        .navbar .auth-buttons .btn-register {
+            background-color: #ffc300;
+            color: #00509e;
+        }
+
+        .navbar .auth-buttons .btn-register:hover {
+            background-color: #e0a500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Unique Navbar -->
+        <nav class="navbar">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="Logo">
+                <span>CarRentalPlus</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/login/">login</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#fleet">Fleet</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-register"><a href="/login/">login</a></button>
+                <button class="btn btn-register"><a href="/register/">register</a></button>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>
