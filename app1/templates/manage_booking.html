@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Bookings</title>
+</head>
+<body>
+    <h1>Manage Bookings</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>id</th>
+                <th>user</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.id }}</td>
+                <td>{{ booking }}</td>
+                <td>
+                    <a href="{% url 'delete' booking.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -68,9 +68,10 @@
                 <img src="{{ property.image.url }}" alt="{{ property.title }}" class="property-image"><br>
             {% endif %}
             <p>Rent Amount: {{ property.rent_amount }}</p>
+            <p>id: {{ property.id }}</p>
             <p>Available Date: {{ property.available_date }}</p>
             <p>Owner: {{ property.owner.username }}</p>
-            <a href="{% url 'car_booking' %}" class="booking-button">Book Now</a>
+            <a href="{% url 'car_booking' property.id %}" class="booking-button">Book Now</a>
         </div>
     {% empty %}
         <p>No properties found matching your criteria.</p>
