@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from datetime import date
 import uuid
-
+from django.core.exceptions import ValidationError
 
 class User(AbstractUser):
     ROLE_CHOICES = (
@@ -48,7 +48,16 @@ class Booking(models.Model):
 class Payment(models.Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name="payments")
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    status = models.CharField(max_length=20, choices=[('PENDING', 'Pending'), ('COMPLETED', 'Completed')], default='PENDING')
+    status = models.CharField(max_length=20, choices=[('PENDING', 'Pending'), ('COMPLETED', 'Completed')], default='COMPLETED')
     payment_method = models.CharField(max_length=20, choices=[('CARD', 'Card'), ('UPI', 'UPI')])
     created_at = models.DateTimeField(auto_now_add=True)
 
+class Review(models.Model):
+    booking = models.OneToOneField(Booking, on_delete=models.CASCADE, related_name="reviews", null=True, blank=True)
+    review = models.TextField(null=True, blank=True)
+    rating = models.FloatField(default=0)
+
+
+def clean(self):
+        if not (0 <= self.rating <= 5):
+            raise ValidationError("Rating must be between 0 and 5.")

@@ -1,0 +1,10 @@
+<h1>Welcome, {{ username }}</h1>
+
+<h2>Your Bookings:</h2>
+<ul>
+    {% for booking in user_bookings %}
+        <li>{{ booking.property.title }} - {{ booking.start_date }} to {{ booking.end_date }}
+            <a href="{% url 'review'%}">Review</a>
+        </li>
+    {% endfor %}
+</ul>

@@ -1,28 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        body {background-color: powderblue;}
+        h1 {color: red;}
+        p {color: blue;}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
     <title>Manage Bookings</title>
 </head>
 <body>
     <h1>Manage Bookings</h1>
     <table>
         <thead>
+            <table style="width:50%">
             <tr>
-                <th>title</th>
                 <th>id</th>
                 <th>user</th>
+                <th>Booking detail</th>
+                <th>Remove</th>
             </tr>
         </thead>
         <tbody>
             {% for booking in bookings %}
+            <tr style="height:5px"></tr>
             <tr>
                 <td>{{ booking.id }}</td>
+                <td>{{ booking.user }}</td>
                 <td>{{ booking }}</td>
                 <td>
                     <a href="{% url 'delete' booking.id %}">Delete</a>
                 </td>
             </tr>
             {% endfor %}
+            <td>
+                <a href="{% url 'logout' %}">logout</a>
+            </td>
         </tbody>
     </table>
 </body>

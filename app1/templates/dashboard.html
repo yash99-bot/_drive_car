@@ -1,15 +1,15 @@
 <form method="GET" action="{% url 'dashboard' %}">
     <div>
-        <label for="title">Title:</label>
+        <label for="Search">search:</label>
         <input type="text" id="title" name="title" value="{{ request.GET.title }}">
-    </div>
-
+    </div> 
     <div>
         <label for="rent_amount">Rent Amount:</label>
         <input type="number" id="rent_amount" name="rent_amount" value="{{ request.GET.rent_amount }}">
     </div>
-
+    <div>
     <button type="submit">Search</button>
+    </div>
 </form>
 
 <h2>Properties</h2>

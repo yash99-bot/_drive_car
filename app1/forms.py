@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Property, Booking, Payment
+from .models import User, Property, Booking, Payment, Review
 
 class UserRegistrationForm(UserCreationForm):
     class Meta:
@@ -21,3 +21,8 @@ class Payment(forms.ModelForm):
     class Meta:
         model = Payment
         fields = ['booking', 'amount', 'payment_method']
+
+class Review_rating(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = '__all__'

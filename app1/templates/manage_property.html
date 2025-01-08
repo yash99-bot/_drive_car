@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Properties</title>
+    <style>
+        body {background-color: powderblue;}
+        h1 {color: red;}
+        p {color: blue;}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manage Properties</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for property in properties %}
+            <tr>
+                <td>{{ property.id }}</td>
+                <td>{{ property.title }}</td>
+                <td>
+                    <a href="{% url 'update' property.id %}">Update</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No properties found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <a href="{% url 'add_property' %}"><button type="submit">add_property</button></a>
+    </div>
+    <td>
+        <a href="{% url 'logout' %}">logout</a>
+    </td>
+</body>
+</html>

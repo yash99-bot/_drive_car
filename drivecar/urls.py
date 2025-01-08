@@ -23,7 +23,7 @@ admin.site.index_title  = "Dashboard"
 
 urlpatterns = [
     path('', include('app1.urls')),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
 ]
 
 

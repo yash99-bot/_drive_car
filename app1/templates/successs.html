@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Payment Success</title>
 </head>
 <body>
-    <h1>payment successful</h1>
+    <h1>Payment Successful</h1>
+    <p>Thank you for your payment!</p>
+    <h2>Booking Details:</h2>
+    <ul>
+        <li><strong>Booking ID:</strong> {{ booking.id }}</li>
+        <li><strong>Total Cost:</strong> ₹{{ booking.total_cost }}</li>
+        <!-- Add other booking details as needed -->
+    </ul>
+    <td>
+        <a href="{% url 'review' %}">review</a>
+    </td>
 </body>
 </html>
